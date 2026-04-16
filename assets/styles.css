@@ -44,6 +44,10 @@ a {
   text-decoration: none;
 }
 
+a[href^="tel"] {
+  white-space: nowrap;
+}
+
 button,
 input,
 select,
@@ -335,17 +339,6 @@ button {
   overflow: hidden;
 }
 
-.hero-panel::before,
-.panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.04), transparent);
-  transform: translateX(-100%);
-  animation: shimmer 8s linear infinite;
-}
-
 .hero-panel .panel-content,
 .panel {
   position: relative;
@@ -358,14 +351,6 @@ button {
   overflow: hidden;
   border-radius: 999px;
   background: linear-gradient(90deg, transparent, rgba(199, 167, 106, 0.65), transparent);
-}
-
-.hero-panel .route-line::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, #ffffff, transparent);
-  animation: routePulse 4.4s linear infinite;
 }
 
 .hero-route {
@@ -721,6 +706,24 @@ button {
   line-height: 1.7;
 }
 
+.footer-meta {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+.footer-tech-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  color: rgba(168, 176, 191, 0.68);
+  font-size: 12px;
+}
+
+.footer-tech-links a:hover {
+  color: var(--muted);
+}
+
 .footer-links {
   justify-items: end;
   color: #dbe2ee;
@@ -872,27 +875,6 @@ button {
   margin-top: 26px;
 }
 
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-
-  45%,
-  100% {
-    transform: translateX(120%);
-  }
-}
-
-@keyframes routePulse {
-  0% {
-    transform: translateX(-120%);
-  }
-
-  100% {
-    transform: translateX(120%);
-  }
-}
-
 @keyframes drift {
   0%,
   100% {
@@ -980,6 +962,10 @@ button {
 
   .footer-links {
     justify-items: start;
+  }
+
+  .footer-meta {
+    justify-content: flex-start;
   }
 
   .floating-chat {
