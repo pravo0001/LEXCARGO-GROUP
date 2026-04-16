@@ -1,0 +1,219 @@
+@import "tailwindcss";
+
+:root {
+  --background: #060b14;
+  --foreground: #f5f7fb;
+  --surface: #0c1524;
+  --surface-strong: #0f192c;
+  --surface-soft: rgba(255, 255, 255, 0.04);
+  --gold: #af8f56;
+  --gold-soft: rgba(175, 143, 86, 0.18);
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-manrope);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background:
+    radial-gradient(circle at top, rgba(175, 143, 86, 0.1), transparent 30%),
+    linear-gradient(180deg, #060b14 0%, #09111f 40%, #050912 100%);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+a,
+button {
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease,
+    opacity 0.3s ease;
+}
+
+::selection {
+  background: rgba(175, 143, 86, 0.35);
+  color: white;
+}
+
+.section-shell {
+  position: relative;
+  padding: 5rem 1.25rem;
+}
+
+.container-wide {
+  margin: 0 auto;
+  max-width: 78rem;
+}
+
+.eyebrow {
+  color: #c2a26a;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+}
+
+.premium-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(180deg, rgba(15, 25, 44, 0.88), rgba(8, 13, 24, 0.96)),
+    linear-gradient(135deg, rgba(175, 143, 86, 0.06), transparent 55%);
+  border-radius: 1.75rem;
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px);
+}
+
+.premium-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+  transform: translateX(-100%);
+  animation: shimmer 8s linear infinite;
+}
+
+.button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #c8aa73 0%, #9e7d43 100%);
+  color: #06101c;
+  font-weight: 700;
+  padding: 0.95rem 1.5rem;
+  box-shadow: 0 16px 36px rgba(175, 143, 86, 0.3);
+}
+
+.button-primary:hover {
+  transform: translateY(-2px);
+}
+
+.button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  color: white;
+  font-weight: 600;
+  padding: 0.9rem 1.35rem;
+}
+
+.button-secondary:hover {
+  border-color: rgba(175, 143, 86, 0.45);
+  background: rgba(175, 143, 86, 0.08);
+}
+
+.input-dark {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.95rem 1rem;
+  color: white;
+  outline: none;
+}
+
+.input-dark::placeholder {
+  color: rgba(244, 244, 245, 0.45);
+}
+
+.input-dark:focus {
+  border-color: rgba(175, 143, 86, 0.45);
+  box-shadow: 0 0 0 4px rgba(175, 143, 86, 0.12);
+}
+
+.hero-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.route-line {
+  position: absolute;
+  inset: auto 8% 18% 8%;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(175, 143, 86, 0.6), transparent);
+  overflow: hidden;
+}
+
+.route-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, white, transparent);
+  animation: routePulse 4.2s linear infinite;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(6px);
+  animation: drift 12s ease-in-out infinite;
+}
+
+.font-heading {
+  font-family: var(--font-manrope), Arial, Helvetica, sans-serif;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  45%,
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0);
+  }
+}
+
+@keyframes routePulse {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@media (min-width: 768px) {
+  .section-shell {
+    padding: 6.5rem 2rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(22rem, 0.8fr);
+    align-items: center;
+  }
+}
