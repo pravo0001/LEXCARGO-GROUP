@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LEXCARGO GROUP
 
-## Getting Started
+Статичний багатосторінковий сайт на чистому `HTML`, `CSS` і `JavaScript`.
 
-First, run the development server:
+## Структура
+
+- `index.html` — головна сторінка
+- `mizhnarodni-perevezennya.html` — сторінка міжнародних перевезень
+- `perevezennya-po-ukrayini.html` — сторінка перевезень по Україні
+- `mytne-oformlennya.html` — сторінка митного оформлення
+- `assets/styles.css` — спільні стилі
+- `assets/app.js` — калькулятор, demo-форма, кнопки поширення та дрібна взаємодія
+- `robots.txt` і `sitemap.xml` — базові SEO-файли
+
+## Локальний перегляд
+
+Сайт можна відкрити напряму через `index.html`, але для коректної перевірки краще підняти простий локальний сервер.
+
+Приклад через Python:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+python -m http.server 3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Після цього відкрийте:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`http://localhost:3000`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Примітка
 
-## Learn More
+Форма заявки зараз працює в demo-режимі на фронтенді. Для бойового використання її можна підключити до:
 
-To learn more about Next.js, take a look at the following resources:
+- CRM
+- email-обробника
+- webhook
+- Telegram-бота
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Деплой
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Сайт підготовлено як статичний проєкт без етапу збірки.
 
-## Deploy on Vercel
+### Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Framework preset: `Other`
+- Build command: залишити порожнім
+- Output directory: `.`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+У репозиторії вже додано `vercel.json` для коректного статичного деплою.
+
+### Netlify
+
+- Base directory: залишити порожнім
+- Build command: залишити порожнім
+- Publish directory: `.`
+
+У репозиторії вже додано `netlify.toml`.
+
+### Звичайний хостинг
+
+Завантажте вміст репозиторію на сервер так, щоб у веб-корені були:
+
+- `index.html`
+- HTML-сторінки послуг
+- папка `assets`
+- `robots.txt`
+- `sitemap.xml`
